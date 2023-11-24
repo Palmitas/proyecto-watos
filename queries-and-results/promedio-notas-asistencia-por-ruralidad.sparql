@@ -1,0 +1,16 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# PROMEDIO DE NOTAS Y PROMEDIO DE ASISTENCIA POR RURALIDAD + TOTAL ALUMNOS 
+SELECT 
+(IF(?ruralidad = "0"^^xsd:integer, "Urbana", "Rural") AS ?tipoRuralidad)
+(AVG(?puntaje) as ?avg_promedio_anual) 
+(AVG(?asistencia) as ?avg_asistencia_anual) 
+(COUNT(?puntaje) as ?n_alumnos) 
+WHERE {
+     ?alumno a ex:Estudiante; ex:promedio ?puntaje; ex:asistencia ?asistencia; ex:estudiaEn ?colegio .
+     ?colegio a ex:Establecimiento_Educacional;  ex:ruralidad ?ruralidad. 
+}
+GROUP BY ?ruralidad
