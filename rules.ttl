@@ -1,0 +1,537 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix map: <http://mapping.example.com/> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix ex: <http://example.com/> .
+
+map:jc_000 rr:child "RBD" ;
+	rr:parent "RBD" .
+
+map:jc_001 rr:child "RBD" ;
+	rr:parent "RBD" .
+
+map:jc_002 rr:child "RBD" ;
+	rr:parent "RBD" .
+
+map:map_docentes_000 rml:logicalSource map:source_003 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "docentes" ;
+	rr:predicateObjectMap map:pom_029, map:pom_030, map:pom_031, map:pom_032, map:pom_033, map:pom_034, map:pom_035, map:pom_036, map:pom_037, map:pom_038 ;
+	rr:subjectMap map:s_003 .
+
+map:map_establecimientos_000 rml:logicalSource map:source_001 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "establecimientos" ;
+	rr:predicateObjectMap map:pom_010, map:pom_011, map:pom_012, map:pom_013, map:pom_014, map:pom_015, map:pom_016, map:pom_017, map:pom_018 ;
+	rr:subjectMap map:s_001 .
+
+map:map_evaluaciones_000 rml:logicalSource map:source_002 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "evaluaciones" ;
+	rr:predicateObjectMap map:pom_019, map:pom_020, map:pom_021, map:pom_022, map:pom_023, map:pom_024, map:pom_025, map:pom_026, map:pom_027, map:pom_028 ;
+	rr:subjectMap map:s_002 .
+
+map:map_personas_000 rml:logicalSource map:source_000 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "personas" ;
+	rr:predicateObjectMap map:pom_000, map:pom_001, map:pom_002, map:pom_003, map:pom_004, map:pom_005, map:pom_006, map:pom_007, map:pom_008, map:pom_009 ;
+	rr:subjectMap map:s_000 .
+
+map:om_000 rdf:type rr:ObjectMap ;
+	rr:constant "http://example.com/Estudiante" ;
+	rr:termType rr:Literal .
+
+map:om_001 rml:reference "GEN_ALU" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_002 rml:reference "NOM_COM_ALU" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_003 rml:reference "EDAD_ALU" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:integer ;
+	rr:termType rr:Literal .
+
+map:om_004 rml:reference "COD_ENSE2" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_005 rml:reference "COD_JOR" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_006 rml:reference "PROM_GRAL" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_007 rml:reference "ASISTENCIA" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:integer ;
+	rr:termType rr:Literal .
+
+map:om_008 rml:reference "SIT_FIN_R" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_009 rdf:type rr:ObjectMap ;
+	rr:constant "http://example.com/Establecimiento_Educacional" ;
+	rr:termType rr:Literal .
+
+map:om_010 rml:reference "NOM_RBD" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_011 rml:reference "COD_REG_RBD" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_012 rml:reference "NOM_REG_RBD_A" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_013 rml:reference "NOM_COM_RBD" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_014 rml:reference "COD_DEPE2" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_015 rml:reference "RURAL_RBD" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:boolean ;
+	rr:termType rr:Literal .
+
+map:om_016 rml:reference "ESTADO_ESTAB" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_017 rdf:type rr:ObjectMap ;
+	rr:constant "http://example.com/Evaluacion_SNED" ;
+	rr:termType rr:Literal .
+
+map:om_018 rml:reference "INDICER" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_019 rml:reference "EFECTIVR" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_020 rml:reference "SUPERAR" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_021 rml:reference "INICIAR" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_022 rml:reference "MEJORAR" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_023 rml:reference "IGUALDR" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_024 rml:reference "INTEGRAR" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_025 rml:reference "SEL2020_25" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:boolean ;
+	rr:termType rr:Literal .
+
+map:om_026 rml:reference "SEL2020_35" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:boolean ;
+	rr:termType rr:Literal .
+
+map:om_027 rdf:type rr:ObjectMap ;
+	rr:constant "http://example.com/Docente" ;
+	rr:termType rr:Literal .
+
+map:om_028 rml:reference "DOC_GENERO" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_029 rml:reference "EDAD" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:integer ;
+	rr:termType rr:Literal .
+
+map:om_030 rml:reference "NIVEL" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_031 rml:reference "PF_PJE" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_032 rml:reference "PF_ESC" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_033 rml:reference "PF_Cat_Carrera" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_034 rml:reference "INSTR_PJE" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:decimal ;
+	rr:termType rr:Literal .
+
+map:om_035 rml:reference "INSTR_ESC" ;
+	rdf:type rr:ObjectMap ;
+	rr:datatype xsd:string ;
+	rr:termType rr:Literal .
+
+map:om_036 rdf:type rr:ObjectMap ;
+	rr:joinCondition map:jc_000 ;
+	rr:parentTriplesMap map:map_establecimientos_000 .
+
+map:om_037 rdf:type rr:ObjectMap ;
+	rr:joinCondition map:jc_001 ;
+	rr:parentTriplesMap map:map_evaluaciones_000 .
+
+map:om_038 rdf:type rr:ObjectMap ;
+	rr:joinCondition map:jc_002 ;
+	rr:parentTriplesMap map:map_establecimientos_000 .
+
+map:pm_000 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_001 rdf:type rr:PredicateMap ;
+	rr:constant ex:genero .
+
+map:pm_002 rdf:type rr:PredicateMap ;
+	rr:constant ex:comuna_residencia .
+
+map:pm_003 rdf:type rr:PredicateMap ;
+	rr:constant ex:edad .
+
+map:pm_004 rdf:type rr:PredicateMap ;
+	rr:constant ex:educacion .
+
+map:pm_005 rdf:type rr:PredicateMap ;
+	rr:constant ex:jornada .
+
+map:pm_006 rdf:type rr:PredicateMap ;
+	rr:constant ex:promedio .
+
+map:pm_007 rdf:type rr:PredicateMap ;
+	rr:constant ex:asistencia .
+
+map:pm_008 rdf:type rr:PredicateMap ;
+	rr:constant ex:situacion_final .
+
+map:pm_009 rdf:type rr:PredicateMap ;
+	rr:constant ex:estudiaEn .
+
+map:pm_010 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_011 rdf:type rr:PredicateMap ;
+	rr:constant ex:nombre .
+
+map:pm_012 rdf:type rr:PredicateMap ;
+	rr:constant ex:cod_region .
+
+map:pm_013 rdf:type rr:PredicateMap ;
+	rr:constant ex:nombre_region .
+
+map:pm_014 rdf:type rr:PredicateMap ;
+	rr:constant ex:comuna .
+
+map:pm_015 rdf:type rr:PredicateMap ;
+	rr:constant ex:dependencia .
+
+map:pm_016 rdf:type rr:PredicateMap ;
+	rr:constant ex:ruralidad .
+
+map:pm_017 rdf:type rr:PredicateMap ;
+	rr:constant ex:estado .
+
+map:pm_018 rdf:type rr:PredicateMap ;
+	rr:constant ex:resultados_evaluacion_sned .
+
+map:pm_019 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_020 rdf:type rr:PredicateMap ;
+	rr:constant ex:puntaje_global .
+
+map:pm_021 rdf:type rr:PredicateMap ;
+	rr:constant ex:efectividad .
+
+map:pm_022 rdf:type rr:PredicateMap ;
+	rr:constant ex:superacion .
+
+map:pm_023 rdf:type rr:PredicateMap ;
+	rr:constant ex:iniciativa .
+
+map:pm_024 rdf:type rr:PredicateMap ;
+	rr:constant ex:mejoramiento .
+
+map:pm_025 rdf:type rr:PredicateMap ;
+	rr:constant ex:igualdad .
+
+map:pm_026 rdf:type rr:PredicateMap ;
+	rr:constant ex:integracion .
+
+map:pm_027 rdf:type rr:PredicateMap ;
+	rr:constant ex:subvencion_completa .
+
+map:pm_028 rdf:type rr:PredicateMap ;
+	rr:constant ex:subvencion_parcial .
+
+map:pm_029 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+map:pm_030 rdf:type rr:PredicateMap ;
+	rr:constant ex:genero .
+
+map:pm_031 rdf:type rr:PredicateMap ;
+	rr:constant ex:edad .
+
+map:pm_032 rdf:type rr:PredicateMap ;
+	rr:constant ex:nivel .
+
+map:pm_033 rdf:type rr:PredicateMap ;
+	rr:constant ex:puntaje_portafolio .
+
+map:pm_034 rdf:type rr:PredicateMap ;
+	rr:constant ex:escala_portafolio .
+
+map:pm_035 rdf:type rr:PredicateMap ;
+	rr:constant ex:categoria_portafolio .
+
+map:pm_036 rdf:type rr:PredicateMap ;
+	rr:constant ex:puntaje_final .
+
+map:pm_037 rdf:type rr:PredicateMap ;
+	rr:constant ex:escala_final .
+
+map:pm_038 rdf:type rr:PredicateMap ;
+	rr:constant ex:trabajaEn .
+
+map:pom_000 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_000 ;
+	rr:predicateMap map:pm_000 .
+
+map:pom_001 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_001 ;
+	rr:predicateMap map:pm_001 .
+
+map:pom_002 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_002 ;
+	rr:predicateMap map:pm_002 .
+
+map:pom_003 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_003 ;
+	rr:predicateMap map:pm_003 .
+
+map:pom_004 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_004 ;
+	rr:predicateMap map:pm_004 .
+
+map:pom_005 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_005 ;
+	rr:predicateMap map:pm_005 .
+
+map:pom_006 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_006 ;
+	rr:predicateMap map:pm_006 .
+
+map:pom_007 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_007 ;
+	rr:predicateMap map:pm_007 .
+
+map:pom_008 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_008 ;
+	rr:predicateMap map:pm_008 .
+
+map:pom_009 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_036 ;
+	rr:predicateMap map:pm_009 .
+
+map:pom_010 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_009 ;
+	rr:predicateMap map:pm_010 .
+
+map:pom_011 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_010 ;
+	rr:predicateMap map:pm_011 .
+
+map:pom_012 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_011 ;
+	rr:predicateMap map:pm_012 .
+
+map:pom_013 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_012 ;
+	rr:predicateMap map:pm_013 .
+
+map:pom_014 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_013 ;
+	rr:predicateMap map:pm_014 .
+
+map:pom_015 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_014 ;
+	rr:predicateMap map:pm_015 .
+
+map:pom_016 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_015 ;
+	rr:predicateMap map:pm_016 .
+
+map:pom_017 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_016 ;
+	rr:predicateMap map:pm_017 .
+
+map:pom_018 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_037 ;
+	rr:predicateMap map:pm_018 .
+
+map:pom_019 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_017 ;
+	rr:predicateMap map:pm_019 .
+
+map:pom_020 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_018 ;
+	rr:predicateMap map:pm_020 .
+
+map:pom_021 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_019 ;
+	rr:predicateMap map:pm_021 .
+
+map:pom_022 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_020 ;
+	rr:predicateMap map:pm_022 .
+
+map:pom_023 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_021 ;
+	rr:predicateMap map:pm_023 .
+
+map:pom_024 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_022 ;
+	rr:predicateMap map:pm_024 .
+
+map:pom_025 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_023 ;
+	rr:predicateMap map:pm_025 .
+
+map:pom_026 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_024 ;
+	rr:predicateMap map:pm_026 .
+
+map:pom_027 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_025 ;
+	rr:predicateMap map:pm_027 .
+
+map:pom_028 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_026 ;
+	rr:predicateMap map:pm_028 .
+
+map:pom_029 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_027 ;
+	rr:predicateMap map:pm_029 .
+
+map:pom_030 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_028 ;
+	rr:predicateMap map:pm_030 .
+
+map:pom_031 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_029 ;
+	rr:predicateMap map:pm_031 .
+
+map:pom_032 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_030 ;
+	rr:predicateMap map:pm_032 .
+
+map:pom_033 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_031 ;
+	rr:predicateMap map:pm_033 .
+
+map:pom_034 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_032 ;
+	rr:predicateMap map:pm_034 .
+
+map:pom_035 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_033 ;
+	rr:predicateMap map:pm_035 .
+
+map:pom_036 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_034 ;
+	rr:predicateMap map:pm_036 .
+
+map:pom_037 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_035 ;
+	rr:predicateMap map:pm_037 .
+
+map:pom_038 rdf:type rr:PredicateObjectMap ;
+	rr:objectMap map:om_038 ;
+	rr:predicateMap map:pm_038 .
+
+map:rules_000 <http://rdfs.org/ns/void#exampleResource> map:map_docentes_000, map:map_establecimientos_000, map:map_evaluaciones_000, map:map_personas_000 ;
+	rdf:type <http://rdfs.org/ns/void#Dataset> .
+
+map:s_000 rdf:type rr:SubjectMap ;
+	rr:template "http://example.com/{ID}" .
+
+map:s_001 rdf:type rr:SubjectMap ;
+	rr:template "http://example.com/colegio_id_{RBD}" .
+
+map:s_002 rdf:type rr:SubjectMap ;
+	rr:template "http://example.com/evaluacion_id{RBD}" .
+
+map:s_003 rdf:type rr:SubjectMap ;
+	rr:template "http://example.com/RUN_{MRUN}" .
+
+map:source_000 rml:referenceFormulation ql:CSV ;
+	rml:source "sample.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_001 rml:referenceFormulation ql:CSV ;
+	rml:source "sned_fix.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_002 rml:referenceFormulation ql:CSV ;
+	rml:source "sned_fix.csv" ;
+	rdf:type rml:LogicalSource .
+
+map:source_003 rml:referenceFormulation ql:CSV ;
+	rml:source "evaluacion_docente_fix.csv" ;
+	rdf:type rml:LogicalSource .
+

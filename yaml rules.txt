@@ -1,0 +1,95 @@
+prefixes:
+ ex: "http://example.com/"
+ rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+ xsd: "http://www.w3.org/2001/XMLSchema#"
+ owl: "http://www.w3.org/2002/07/owl#"
+
+mappings:
+  personas:
+    sources:
+      - ['sample.csv~csv']
+    s: ex:$(ID)
+    #graphs: ex:Estudiantes
+    po:
+      - [rdf:type, ex:Estudiante]
+      - [ex:genero, $(GEN_ALU), xsd:string]
+      #- [ex:fecha_nacimiento, $(FEC_NAC_ALU), xsd:integer]
+      - [ex:comuna_residencia, $(NOM_COM_ALU), xsd:string]
+      - [ex:edad, $(EDAD_ALU), xsd:integer]
+      - [ex:educacion, $(COD_ENSE2), xsd:string]
+      - [ex:jornada, $(COD_JOR), xsd:string]
+      - [ex:promedio, $(PROM_GRAL), xsd:decimal]
+      - [ex:asistencia, $(ASISTENCIA), xsd:integer]
+      - [ex:situacion_final, $(SIT_FIN_R), xsd:string]
+      - p: ex:estudiaEn
+        o:
+          mapping: establecimientos
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RBD), s]
+              - [str2, $(RBD), o]
+        #g: ex:Colegios
+        
+  establecimientos:
+    sources:
+      - ['sample.csv~csv']
+      
+    s: ex:colegio_id_$(RBD)
+    po:
+      - [rdf:type, ex:Establecimiento_Educacional]
+      - [ex:nombre, $(NOM_RBD), xsd:string]
+      - [ex:region, $(NOM_REG_RBD_A), xsd:string]
+      - [ex:comuna, $(NOM_COM_RBD), xsd:string]
+      - [ex:dependencia, $(COD_DEPE2), xsd:string]
+      - [ex:ruralidad, $(RURAL_RBD), xsd:boolean]
+      - [ex:estado, $(ESTADO_ESTAB), xsd:string]
+      - p: ex:resultados_evaluacion_sned
+        o:
+          mapping: evaluaciones
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RBD), s]
+              - [str2, $(RBD), o]
+        #g: ex:Colegios
+      
+  evaluaciones:
+    sources:
+     - ['sned_fix.csv~csv']
+    s: ex:evaluacion_id$(RBD)
+    po:
+      - [rdf:type, ex:Evaluacion_SNED]
+      - [ex:puntaje_global, $(INDICER), xsd:decimal]
+      - [ex:efectividad, $(EFECTIVR), xsd:decimal]
+      - [ex:superacion, $(SUPERAR), xsd:decimal]
+      - [ex:iniciativa, $(INICIAR), xsd:decimal]
+      - [ex:mejoramiento, $(MEJORAR), xsd:decimal]
+      - [ex:igualdad, $(IGUALDR), xsd:decimal]
+      - [ex:integracion, $(INTEGRAR), xsd:decimal]
+      - [ex:subvencion_completa, $(SEL2020_25), xsd:boolean]
+      - [ex:subvencion_parcial, $(SEL2020_35), xsd:boolean]
+  
+  docentes:
+    sources:
+     - ['evaluacion_docente_fix.csv~csv']
+    s: ex:RUN_$(MRUN)
+    po:
+      - [rdf:type, ex:Docente]
+      - [ex:genero, $(DOC_GENERO), xsd:string]
+      - [ex:edad, $(EDAD), xsd:integer]
+      - [ex:nivel, $(NIVEL), xsd:string]
+      - [ex:puntaje_portafolio, $(PF_PJE), xsd:decimal]
+      - [ex:escala_portafolio, $(PF_ESC), xsd:string]
+      - [ex:categoria_portafolio, $(PF_Cat_Carrera), xsd:string]
+      - [ex:puntaje_final, $(INSTR_PJE), xsd:decimal]
+      - [ex:escala_final, $(INSTR_ESC), xsd:string]
+      - p: ex:trabajaEn
+        o:
+          mapping: establecimientos
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RBD), s]
+              - [str2, $(RBD), o]
