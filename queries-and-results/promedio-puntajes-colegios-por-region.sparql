@@ -1,0 +1,14 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+## PUNTAJES DE COLEGIO POR REGION
+SELECT ?region (AVG(?puntaje) as ?puntaje_promedio) (COUNT(?puntaje) as ?n_colegios)WHERE {
+  SELECT ?puntaje ?region ?nom_region WHERE {
+    ?colegio a ex:Establecimiento_Educacional; ex:cod_region ?region;  ex:resultados_evaluacion_sned ?evaluacion .
+    ?evaluacion a ex:Evaluacion_SNED; ex:puntaje_global ?puntaje .
+    } 
+}
+GROUP BY (?region)
+ORDER BY (?region)

@@ -1,0 +1,33 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# CANTIDAD DE COLEGIOS CON LOS MEJORES PUNTAJES Y RURALIDAD POR REGION
+SELECT 
+?region 
+(IF(?ruralidad = "0"^^xsd:integer, "Urbana", "Rural") AS ?tipoRuralidad)
+?ptj 
+(COUNT(?est) as ?numEstablecimientos)
+WHERE {
+  ?est a ex:Establecimiento_Educacional .
+  ?est ex:cod_region ?region ;
+       ex:resultados_evaluacion_sned ?eval ;
+       ex:ruralidad ?ruralidad .
+  ?eval ex:puntaje_global ?ptj .
+
+  {
+    SELECT ?region1 (MAX(?ptj_sub1) as ?max_ptj)
+    WHERE {
+      ?est1 a ex:Establecimiento_Educacional .
+      ?est1 ex:cod_region ?region1 ;
+             ex:resultados_evaluacion_sned ?eval1 .
+      ?eval1 ex:puntaje_global ?ptj_sub1 .
+    }
+    GROUP BY ?region1
+  }
+
+  FILTER (?ptj = ?max_ptj && ?region = ?region1)
+}
+GROUP BY ?region ?ruralidad ?ptj
+ORDER BY ?ptj

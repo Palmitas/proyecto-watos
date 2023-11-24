@@ -1,0 +1,31 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Media etaria de los 100 mejores docentes y 100 peores docentes
+SELECT 
+?promedio_edad_mejores
+?promedio_edad_peores
+WHERE {
+  {
+  	SELECT (AVG(?edad) as ?promedio_edad_mejores) 
+  	WHERE {
+  		SELECT ?puntaje ?edad WHERE {
+      		?docentes a ex:Docente; ex:puntaje_final ?puntaje ; ex:edad ?edad
+    	} 
+  	ORDER BY DESC(?puntaje)
+  	LIMIT 100 
+  	}
+  } OPTIONAL
+  {
+  	SELECT (AVG(?edad) as ?promedio_edad_peores) 
+  	WHERE {
+  		SELECT ?puntaje ?edad WHERE {
+      		?docentes a ex:Docente; ex:puntaje_final ?puntaje ; ex:edad ?edad
+    	} 
+  	ORDER BY ASC(?puntaje)
+  	LIMIT 100 
+  	}
+  }
+}
