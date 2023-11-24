@@ -3,7 +3,7 @@ PREFIX ex: <http://example.com/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-## PROMEDIO DE ALUMNOS EN LOS COLEGIOS DONDE TRABAJAN LOS 100 MEJORES DOCENTES
+## PROMEDIO DE ALUMNOS EN LOS COLEGIOS DONDE TRABAJAN LOS 100 MEJORES DOCENTES y LOS 100 PEORES DOCENTES
 SELECT 
 ?promedio_anual_mejores_docentes
 ?promedio_anual_peores_docentes

@@ -3,7 +3,11 @@ PREFIX ex: <http://example.com/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?region (COUNT(?situacion) as ?cantidad_reprobados)
+SELECT 
+?region 
+((COUNT(?situacion)/?total_alumnos)*100 as ?porcentaje_reprobados) 
+(COUNT(?situacion) as ?cantidad_reprobados) 
+?total_alumnos
 WHERE {
   ?alumno a ex:Estudiante; ex:situacion_final ?situacion; ex:estudiaEn ?est
   {
@@ -14,5 +18,19 @@ WHERE {
 	}
   }
   FILTER(?situacion = "Reprobado")
+  OPTIONAL {
+    SELECT ?region (COUNT(?alumno) as ?total_alumnos)
+    WHERE { 
+      	?alumno a ex:Estudiante; ex:situacion_final ?situacion; ex:estudiaEn ?est
+  		{
+		SELECT ?est ?region 
+		WHERE {
+  			?est a ex:Establecimiento_Educacional;
+        	ex:cod_region ?region .
+		}
+  		}
+    }
+    GROUP BY ?region
+  }
 }
-GROUP BY ?region
+GROUP BY ?region ?total_alumnos
