@@ -1,0 +1,39 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+## PROMEDIO DE ALUMNOS EN LOS COLEGIOS DONDE TRABAJAN LOS 100 MEJORES DOCENTES
+SELECT 
+?promedio_anual_mejores_docentes
+?promedio_anual_peores_docentes
+WHERE {
+  {
+	SELECT (AVG(?promedio_anual) as ?promedio_anual_mejores_docentes) 
+	WHERE {
+      	?alumno a ex:Estudiante; ex:promedio ?promedio_anual; ex:estudiaEn ?colegio
+    	{
+      	SELECT ?colegio WHERE {
+          		?docentes a ex:Docente; ex:puntaje_final ?puntaje ; ex:trabajaEn ?colegio .
+        } 
+      	ORDER BY DESC(?puntaje)
+      	LIMIT 100 
+    	}
+    	FILTER (?promedio_anual > 0)
+  	}
+  } OPTIONAL
+  {
+	SELECT (AVG(?promedio_anual) as ?promedio_anual_peores_docentes) 
+	WHERE {
+      	?alumno a ex:Estudiante; ex:promedio ?promedio_anual; ex:estudiaEn ?colegio
+    	{
+      	SELECT ?colegio WHERE {
+          		?docentes a ex:Docente; ex:puntaje_final ?puntaje ; ex:trabajaEn ?colegio .
+        } 
+      	ORDER BY ASC(?puntaje)
+      	LIMIT 100 
+    	}
+    	FILTER (?promedio_anual > 0)
+  	}
+  }
+}
