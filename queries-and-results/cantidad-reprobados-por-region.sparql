@@ -1,0 +1,18 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?region (COUNT(?situacion) as ?cantidad_reprobados)
+WHERE {
+  ?alumno a ex:Estudiante; ex:situacion_final ?situacion; ex:estudiaEn ?est
+  {
+	SELECT ?est ?region 
+	WHERE {
+  		?est a ex:Establecimiento_Educacional;
+        ex:cod_region ?region .
+	}
+  }
+  FILTER(?situacion = "Reprobado")
+}
+GROUP BY ?region

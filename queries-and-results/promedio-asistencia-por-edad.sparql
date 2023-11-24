@@ -1,0 +1,13 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+## PROMEDIO DE ASISTENCIA POR EDAD
+SELECT ?edad (AVG(?asistencia) as ?promedio_asistencia)  
+WHERE { 
+  ?alumno a ex:Estudiante; ex:promedio ?promedio_anual; ex:edad ?edad; ex:asistencia ?asistencia .
+  FILTER (?asistencia>0)
+}
+GROUP BY (?edad)
+ORDER BY (?promedio_asistencia)
